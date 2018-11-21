@@ -5,6 +5,6 @@ if ! test -f example/MobileNetSSD_train.prototxt ;then
         exit 1
 fi
 mkdir -p snapshot
-../../build/tools/caffe train -solver="solver_train.prototxt" \
+../caffe-ssd/build/tools/caffe train -solver="solver_train.prototxt" \
 -weights="mobilenet_iter_73000.caffemodel" \
 -gpu 0 
