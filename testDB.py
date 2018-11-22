@@ -6,7 +6,7 @@ import numpy as np
 import sys, os
 import cv2
 
-caffe_root = '/home/nick2/NetLab/NetLab/framework/caffe/'
+caffe_root = '/home/adas/caffe-ssd/build/tools/caffe'
 sys.path.insert(0, caffe_root + 'python')
 import caffe
 import lmdb
@@ -20,7 +20,7 @@ CLASSES = ('background',
            'motorbike', 'person', 'pottedplant',
            'sheep', 'sofa', 'train', 'tvmonitor')
 
-db_path = '/home/nick2/data/VOCdevkit/VOC0712/lmdb/'
+db_path = '/home/adas/data/VOCdevkit/VOC0712/lmdb/'
 train_lmdb = db_path + 'VOC0712_trainval_lmdb'
 test_lmdb = db_path + 'VOC0712_test_lmdb'
 
