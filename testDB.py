@@ -6,7 +6,7 @@ import numpy as np
 import sys, os
 import cv2
 
-caffe_root = '/home/adas/caffe-ssd/build/tools/caffe'
+caffe_root = '/home/adas/Netlab/caffe-ssd/'
 sys.path.insert(0, caffe_root + 'python')
 import caffe
 import lmdb
