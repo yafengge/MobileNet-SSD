@@ -1,17 +1,19 @@
 import numpy as np  
 import sys,os  
 import cv2
-caffe_root = '/home/nick2/NetLab/NetLab/framework/caffe/'
+caffe_root = '/home/adas/Netlab/caffe-ssd/'
 sys.path.insert(0, caffe_root + 'python')  
 import caffe
+import time
 
 from datetime import datetime
 
 
-net_file= 'model_20181114/mobilenet_ssd_512x512_deploy.prototxt'
-caffe_model='model_20181114/mobilenet_ssd_512x512_deploy.caffemodel'
+net_file= 'example512/MobileNetSSD_deploy.prototxt'
+caffe_model='snapshot512/mobilenet_iter_16194.caffemodel'
 
-EXAMPLES_BASE_DIR='/home/nick2/video/detection/20180930/capture20180930/adas-2018-09-30_preview2.wmv'
+EXAMPLES_BASE_DIR='/home/adas/video/detection/20180930/capture20180930/adas-2018-09-30_preview2.wmv'
+
 
 if not os.path.exists(caffe_model):
     print("MobileNetSSD_deploy.affemodel does not exist,")
@@ -67,26 +69,24 @@ def detect(imgfile):
         #Exit if ESC pressed
     #if k == 27 : return False
     return True
-
-
-
-
-
 while (True):
    # for f in os.listdir(EXAMPLES_BASE_DIR):
     cap = cv2.VideoCapture(EXAMPLES_BASE_DIR)
     while (True):
-        start = datetime.utcnow()
+        t = time.time()
+        start = int(round(t * 1000))
         ret, infer_image = cap.read()
 
         if ret==False:
             break;
         detect(infer_image);
 
-        end = datetime.utcnow()
+        t = time.time()
+        end = int(round(t * 1000))
+
         c = end - start;
 
-        print('infertime:', (int)(c.microseconds / 1000))
+        print('in fertime:', c)
         #print EXAMPLES_BASE_DIR + "/" + "f"
     #  break
     # cap = cv2.VideoCapture(EXAMPLES_BASE_DIR + 'front.avi');
